@@ -9,8 +9,16 @@
     <string name="title_activity_display_message">My Message</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_search">Search</string>
-    <string name="welcome">Welcome</string>
+    <string name="welcome">WELCOME</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="title_activity_splash">SplashActivity</string>
+        <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="log_me_out">Log me out</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="no_account_register_me">Sign up!</string>
+    
 
 </resources>
