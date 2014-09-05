@@ -12,13 +12,19 @@
     <string name="welcome">WELCOME</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="title_activity_splash">SplashActivity</string>
-        <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="log_me_out">Log me out</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="no_account_register_me">Sign up!</string>
-    
+    <string name="buy_use">Buy a bike pass</string>
+    <string name="title_activity_buy_pass">BuyPassActivity</string>
+    <string name="hourly_pass">Hourly Pass</string>
+    <string name="daily_pass">Daily Pass</string>
+    <string name="weekly_pass">Weekly Pass</string>
+    <string name="monthly_pass">Monthly Pass</string>
+    <string name="yearly_pass">Yearly Pass</string>
 
 </resources>

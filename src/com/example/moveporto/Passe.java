@@ -9,35 +9,44 @@ public class Passe {
 	GregorianCalendar dataCompra;
 	GregorianCalendar dataExp;
 	int tempoTotal;
+	int id;
+	User user;
 	//int tempoRestante;
 	
-	public Passe(TipoPasse tipo) {
+	public Passe(TipoPasse tipo, User user) {
 		
 		setTipo(tipo);
 		setDataCompra();
 		setDataExp();
 		setTempoTotal();
+		setUser(user);
 		
 	}
 
-	private TipoPasse getTipo() {
+	
+
+	public TipoPasse getTipo() {
 		return tipo;
 	}
 
-	private double getCusto() {
+	public double getCusto() {
 		return custo;
 	}
 
-	private GregorianCalendar getDataCompra() {
+	public GregorianCalendar getDataCompra() {
 		return dataCompra;
 	}
 
-	private GregorianCalendar getDataExp() {
+	public GregorianCalendar getDataExp() {
 		return dataExp;
 	}
 
-	private int getTempoTotal() {
+	public int getTempoTotal() {
 		return tempoTotal;
+	}
+	
+	public User getUser(){
+		return user;
 	}
 
 
@@ -160,6 +169,10 @@ public class Passe {
 			
 		}
 		
+	}
+	
+	private void setUser(User user) {
+		this.user=user;		
 	}
 	
 	

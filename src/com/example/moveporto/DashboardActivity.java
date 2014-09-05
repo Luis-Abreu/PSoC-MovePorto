@@ -43,4 +43,10 @@ public class DashboardActivity extends Activity {
         finish();
         
     }
+    
+    public void changePass(){
+    	Intent changePass = new Intent(getApplicationContext(), BuyPassActivity.class);
+    	startActivity(changePass);
+    	finish();
+    }
 }

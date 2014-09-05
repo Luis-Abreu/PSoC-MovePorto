@@ -1,31 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/background" >
+    android:background="@drawable/background"
+    android:orientation="vertical" >
 
     <TextView
-        android:layout_width="fill_parent"
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dip"
-        android:gravity="center"
-        android:text="@string/welcome"
-        android:textSize="40dip"
-        tools:ignore="SpUsage" />
+        android:text="@string/buy_use"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:onClick="changePass" />
 
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="fill_parent"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dip"
-        android:background="@null"
-        android:text="@string/log_me_out"
-        android:textColor="#21dbd4"
-        android:textSize="20dip"
-        android:textStyle="bold"
-        android:onClick="logOut"
-        tools:ignore="SpUsage" />
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </LinearLayout>
