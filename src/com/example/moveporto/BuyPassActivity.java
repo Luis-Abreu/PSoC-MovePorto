@@ -22,7 +22,7 @@ public class BuyPassActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_buy_pass);
+		
 
 		btnhourly = (Button) findViewById(R.id.btn1);
 		btnDaily = (Button) findViewById(R.id.btn5);
@@ -200,6 +200,8 @@ public class BuyPassActivity extends ActionBarActivity {
 			}
 		});
 
+		
+		setContentView(R.layout.activity_buy_pass);
 	}
 
 	@Override
