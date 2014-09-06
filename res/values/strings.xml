@@ -26,5 +26,9 @@
     <string name="weekly_pass">Weekly Pass</string>
     <string name="monthly_pass">Monthly Pass</string>
     <string name="yearly_pass">Yearly Pass</string>
+    <string name="welcome_">"Welcome, "</string>
+    <string name="change_pass">"Change Pass"</string>
+    <string name="confirm_buy">"Do you really wish to buy this pass?"</string>
+    <string name="buy_pass">"Confirm buy"</string>
 
 </resources>

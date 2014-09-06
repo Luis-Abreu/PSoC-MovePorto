@@ -25,9 +25,9 @@ public class User {
 	private void setEmail(String email) {
 		this.email = email;
 	}
-	private void setCurrentpass(Passe currentpass) {
+	public void setCurrentpass(Passe currentpass) {
 		this.currentpass = currentpass;
-	}	
+	}
 	
 	
 
