@@ -2,6 +2,18 @@ package com.example.moveporto;
 
 import java.util.GregorianCalendar;
 
+import library.DatabaseHandler;
+import library.UserFunctions;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.util.Log;
+
 public class Passe {
 	
 	TipoPasse tipo;	
@@ -10,8 +22,10 @@ public class Passe {
 	GregorianCalendar dataExp;
 	int tempoTotal;
 	int id;
-	User user;
+	public User user;
 	//int tempoRestante;
+	
+	private static String KEY_SUCCESS = "success";
 	
 	public Passe(TipoPasse tipo, User user) {
 		
@@ -20,10 +34,64 @@ public class Passe {
 		setDataExp();
 		setTempoTotal();
 		setUser(user);
+		DashboardActivity.user.setCurrentpass(this);
+		storePass();
 		
 	}
 
 	
+
+	private void storePass() {
+		
+		NetAsync();
+		
+	}
+
+
+
+	private void NetAsync() {
+		new ProcessStorePass().execute();		
+	}
+	
+	private class ProcessStorePass extends AsyncTask<String, String, JSONObject> {
+		
+		private ProgressDialog pDialog;
+		
+		String type, username;
+		
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			type = tipo.name();
+			username= user.getFullName();
+
+		}
+		
+		protected JSONObject doInBackground(String... args) {
+			UserFunctions userFunction = new UserFunctions();
+			JSONObject json = userFunction.storePass(type, username);
+			
+			return json;
+		}
+		
+		@Override
+		protected void onPostExecute(JSONObject json) {
+			
+			try {
+				if (json.getString(KEY_SUCCESS) != null) {
+					
+					String res = json.getString(KEY_SUCCESS);
+					Log.d("Pass stored sucessfully: ",json.toString());
+					
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			
+		}
+	}	
+
+
 
 	public TipoPasse getTipo() {
 		return tipo;

@@ -9,6 +9,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
 import com.example.moveporto.DashboardActivity;
+import com.example.moveporto.TipoPasse;
 import com.example.moveporto.User;
 
 import android.content.Context;
@@ -27,6 +28,7 @@ public class UserFunctions {
 
 	private static String login_tag = "login";
 	private static String register_tag = "register";
+	private static String storepass_tag = "storepass";
 
 	private static User user;
 
@@ -66,6 +68,19 @@ public class UserFunctions {
 		params.add(new BasicNameValuePair("email", email));
 		params.add(new BasicNameValuePair("password", password));
 
+		// getting JSON Object
+		JSONObject json = jsonParser.getJSONFromUrl(registerURL, params);
+		// return json
+		return json;
+	}
+	
+	public JSONObject storePass(String type, String username) {
+		// Building Parameters
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("tag", storepass_tag));
+		params.add(new BasicNameValuePair("type", type));
+		params.add(new BasicNameValuePair("user", username));
+		
 		// getting JSON Object
 		JSONObject json = jsonParser.getJSONFromUrl(registerURL, params);
 		// return json

@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,14 +23,17 @@ public class BuyPassActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_buy_pass);
 		
 
-		btnhourly = (Button) findViewById(R.id.btn1);
-		btnDaily = (Button) findViewById(R.id.btn5);
-		btnWeekly = (Button) findViewById(R.id.btn4);
-		btnMonthly = (Button) findViewById(R.id.btn3);
-		btnYearly = (Button) findViewById(R.id.btn2);
-
+		btnhourly = (Button) findViewById(R.id.btnhourly);
+		btnDaily = (Button) findViewById(R.id.btnDaily);
+		btnWeekly = (Button) findViewById(R.id.btnWeekly);
+		btnMonthly = (Button) findViewById(R.id.btnMonthly);
+		btnYearly = (Button) findViewById(R.id.btnYearly);
+		
+		
+		
 		btnhourly.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -40,12 +44,12 @@ public class BuyPassActivity extends ActionBarActivity {
 				// Add the buttons
 				builder.setPositiveButton("ok",
 						new DialogInterface.OnClickListener() {
+					@Override
 							public void onClick(DialogInterface dialog, int id) {
-								Passe passe = new Passe(TipoPasse.HOURLY,
-										DashboardActivity.user);
-								DashboardActivity.user.setCurrentpass(passe);
+								Passe passe = new Passe(TipoPasse.HOURLY,DashboardActivity.user);
 								
 								Intent i = new Intent(getApplicationContext(),DashboardActivity.class);
+								i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 								startActivity(i);
 								finish();
 							}
@@ -75,9 +79,7 @@ public class BuyPassActivity extends ActionBarActivity {
 				builder.setPositiveButton("ok",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
-								Passe passe = new Passe(TipoPasse.DAYLY,
-										DashboardActivity.user);
-								DashboardActivity.user.setCurrentpass(passe);
+								Passe passe = new Passe(TipoPasse.DAYLY,DashboardActivity.user);						
 								
 								Intent i = new Intent(getApplicationContext(),DashboardActivity.class);
 								startActivity(i);
@@ -109,10 +111,7 @@ public class BuyPassActivity extends ActionBarActivity {
 				builder.setPositiveButton("ok",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
-								Passe passe = new Passe(TipoPasse.WEEKLY,
-										DashboardActivity.user);
-								DashboardActivity.user.setCurrentpass(passe);
-								
+								Passe passe = new Passe(TipoPasse.WEEKLY,DashboardActivity.user);								
 								Intent i = new Intent(getApplicationContext(),DashboardActivity.class);
 								startActivity(i);
 								finish();
@@ -143,9 +142,7 @@ public class BuyPassActivity extends ActionBarActivity {
 				builder.setPositiveButton("ok",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
-								Passe passe = new Passe(TipoPasse.MONTHLY,
-										DashboardActivity.user);
-								DashboardActivity.user.setCurrentpass(passe);
+								Passe passe = new Passe(TipoPasse.MONTHLY,DashboardActivity.user);
 								
 								Intent i = new Intent(getApplicationContext(),DashboardActivity.class);
 								i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -178,9 +175,7 @@ public class BuyPassActivity extends ActionBarActivity {
 				builder.setPositiveButton("ok",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
-								Passe passe = new Passe(TipoPasse.YEARLY,
-										DashboardActivity.user);
-								DashboardActivity.user.setCurrentpass(passe);
+								Passe passe = new Passe(TipoPasse.YEARLY,DashboardActivity.user);
 								
 								Intent i = new Intent(getApplicationContext(),DashboardActivity.class);
 								startActivity(i);
@@ -201,7 +196,7 @@ public class BuyPassActivity extends ActionBarActivity {
 		});
 
 		
-		setContentView(R.layout.activity_buy_pass);
+		
 	}
 
 	@Override

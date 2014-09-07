@@ -1,5 +1,6 @@
 package com.example.moveporto;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,6 +49,21 @@ public class DashboardActivity extends Activity {
             expirationDateTextView=(TextView) findViewById(R.id.textView5);
             expirationDateTextView.append((CharSequence) user.currentpass.dataExp.getTime().toString());
             }
+            
+            btnLogout = (Button) findViewById(R.id.btnLogout);
+            
+            btnLogout.setOnClickListener(new View.OnClickListener() {
+                 
+                public void onClick(View arg0) {
+                    // TODO Auto-generated method stub
+                    userFunctions.logoutUser(getApplicationContext());
+                    Intent login = new Intent(getApplicationContext(), LoginActivity.class);
+                    login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(login);
+                    // Closing dashboard screen
+                    finish();
+                }
+            });
         	
         }else{
             // user is not logged in show login screen
@@ -77,7 +93,9 @@ public class DashboardActivity extends Activity {
     }
 
 	public static void setUser(String username, String email) {
-		user= new User(username,email);		
+		if (user==null) {
+			user= new User(username,email);
+		}		
 	}
 	
 	public User getUser(){
