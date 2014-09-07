@@ -18,6 +18,7 @@ public class DashboardActivity extends Activity {
     TextView emailTextView;
     TextView currentPassTextView;
     TextView expirationDateTextView;
+    TextView pinTextView;
     static User user;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,8 @@ public class DashboardActivity extends Activity {
             
             emailTextView=(TextView) findViewById(R.id.textView3); 
             emailTextView.append((CharSequence) user.email);
+            pinTextView=(TextView) findViewById(R.id.textView6);
+            pinTextView.append((CharSequence) "You don't have an active pass");
             
             if(user.currentpass!=null){
             
@@ -47,7 +50,9 @@ public class DashboardActivity extends Activity {
             currentPassTextView.append((CharSequence) user.currentpass.tipo.name());
             
             expirationDateTextView=(TextView) findViewById(R.id.textView5);
-            expirationDateTextView.append((CharSequence) user.currentpass.dataExp.getTime().toString());
+            expirationDateTextView.append((CharSequence) user.currentpass.dataExp.getTime().toString());            
+            
+            pinTextView.setText((CharSequence) "PIN: "+user.pin);
             }
             
             btnLogout = (Button) findViewById(R.id.btnLogout);
@@ -92,9 +97,9 @@ public class DashboardActivity extends Activity {
     	finish();
     }
 
-	public static void setUser(String username, String email) {
+	public static void setUser(User u) {
 		if (user==null) {
-			user= new User(username,email);
+			user= u;
 		}		
 	}
 	

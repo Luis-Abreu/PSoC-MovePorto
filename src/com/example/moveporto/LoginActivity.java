@@ -32,6 +32,7 @@ public class LoginActivity extends Activity {
 	private static String KEY_NAME = "name";
 	private static String KEY_EMAIL = "email";
 	private static String KEY_CREATED_AT = "created_at";
+	private static String KEY_PIN = "pin";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -112,14 +113,13 @@ public class LoginActivity extends Activity {
 						UserFunctions logout = new UserFunctions();
 						logout.logoutUser(getApplicationContext());
 						
-						db.addUser(json_user.getString(KEY_NAME),
-								json_user.getString(KEY_EMAIL),
-								json.getString(KEY_UID),
-								json_user.getString(KEY_CREATED_AT));
+						db.addUser(json_user.getString(KEY_NAME),json_user.getString(KEY_EMAIL),json_user.getString(KEY_PIN),json.getString(KEY_UID),json_user.getString(KEY_CREATED_AT));
 						
 						String username = json_user.getString(KEY_NAME);
 						String email = json_user.getString(KEY_EMAIL);
-						DashboardActivity.setUser(username, email);
+						String pin = json_user.getString("pin");
+						User user = new User(username,email,pin);
+						DashboardActivity.setUser(user);
 						// Launch Dashboard Screen
 						Intent dashboard = new Intent(getApplicationContext(),
 								DashboardActivity.class);

@@ -1,8 +1,10 @@
 package library;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -63,17 +65,33 @@ public class UserFunctions {
 	public JSONObject registerUser(String name, String email, String password) {
 		// Building Parameters
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		int pin=newPin();
 		params.add(new BasicNameValuePair("tag", register_tag));
 		params.add(new BasicNameValuePair("name", name));
 		params.add(new BasicNameValuePair("email", email));
+		params.add(new BasicNameValuePair("pin", ""+pin));
 		params.add(new BasicNameValuePair("password", password));
+		
 
 		// getting JSON Object
 		JSONObject json = jsonParser.getJSONFromUrl(registerURL, params);
 		// return json
 		return json;
+		
 	}
 	
+	private int newPin() {
+		List<Integer> numbers = new ArrayList<Integer>();
+	    for(int i = 1; i < 10; i++){
+	        numbers.add(i);
+	    }
+	    Collections.shuffle(numbers);
+
+	    int pin = (numbers.get(0)*1000)+(numbers.get(1)*100)+(numbers.get(2)*10)+(numbers.get(3));
+	    Log.d("stop here","");
+		return pin;
+	}
+
 	public JSONObject storePass(String type, String username) {
 		// Building Parameters
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -99,7 +117,9 @@ public class UserFunctions {
 			user = db.getUserDetails();
 			String username = user.get("name");
 			String email = user.get("email");
-			DashboardActivity.setUser(username, email);
+			String pin = user.get("pin");
+			User u = new User(username,email,pin);
+			DashboardActivity.setUser(u);
 
 			return true;
 		}
@@ -112,6 +132,8 @@ public class UserFunctions {
 	public boolean logoutUser(Context context) {
 		DatabaseHandler db = new DatabaseHandler(context);
 		db.resetTables();
+		User user = null;
+		DashboardActivity.setUser(user);
 		return true;
 	}
 

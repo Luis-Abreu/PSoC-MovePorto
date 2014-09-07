@@ -5,10 +5,16 @@ public class User {
 	public String fullName="";
 	public String email="";
 	public Passe currentpass=null;
+	public String pin;
 	
-	public User(String fullName, String email) {
+	public User(String fullName, String email, String pin) {
 		setFullName(fullName);
 		setEmail(email);
+		setPin(pin);
+		
+	}
+	private void setPin(String pin) {
+		this.pin = pin;		
 	}
 	public String getFullName() {
 		return fullName;
@@ -28,6 +34,8 @@ public class User {
 	public void setCurrentpass(Passe currentpass) {
 		this.currentpass = currentpass;
 	}
+	
+	
 	
 	
 
